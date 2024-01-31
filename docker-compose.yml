@@ -1,0 +1,9 @@
+version: "3.4"
+
+services:
+  web:
+    build: .
+    container_name: test-docker
+    ports:
+      - 3000:3000
+

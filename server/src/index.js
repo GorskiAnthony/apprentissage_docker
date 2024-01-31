@@ -4,7 +4,7 @@ const cors = require("cors");
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3310;
 
 app.use(
   cors({
@@ -13,7 +13,7 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-  res.json({ message: "Hello World!" });
+  res.json({ message: "Hello World!!" });
 });
 
 app.listen(PORT, (err) => {
