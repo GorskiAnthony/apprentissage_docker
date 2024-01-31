@@ -6,6 +6,8 @@
   "scripts": {
     "postinstall": "cd client && npm install && cd .. && cd server && npm install",
     "dev": "concurrently -p \"[{name}]\" -n \"client,server\" -c \"blue.bold,green.bold\" \"cd client && npm run dev\" \"cd server && npm run dev\"",
+    "dev-client": "cd client && npm run dev",
+    "dev-server": "cd server && npm run dev",
     "build": "cd client && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
