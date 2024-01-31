@@ -10,4 +10,5 @@ COPY . .
 
 RUN npm run build
 
-CMD npm run dev
+# Utilise le serveur HTTP simple fourni par Express pour servir les fichiers statiques
+CMD ["npm", "start"]
