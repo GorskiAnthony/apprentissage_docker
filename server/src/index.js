@@ -7,32 +7,29 @@ const app = express();
 
 const PORT = process.env.PORT || 3310;
 
+// Autorise les requêtes provenant de http://localhost:3000
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "http://localhost:3310",
   }),
 );
 
-app.get("/", (req, res) => {
-  res.json({ message: "Hello World!!" });
-});
+// Définit le répertoire contenant les fichiers statiques de l'application React
+const reactBuildPath = path.join(__dirname, "..", "..", "client", "dist");
 
-/**
- * Render the index.html file
- */
+// Utilise express.static pour servir les fichiers statiques
+app.use(express.static(reactBuildPath));
 
-// Définit le répertoire statique pour servir les fichiers React
-app.use(express.static(path.join(__dirname, "client", "build")));
-
-// Définit une route pour toutes les autres requêtes qui ne correspondent pas aux fichiers statiques
+// Redirige les requêtes non gérées vers le fichier index.html de React
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  res.sendFile(path.join(reactBuildPath, "index.html"));
 });
 
+// Lance le serveur Express
 app.listen(PORT, (err) => {
   if (err) {
-    console.log(err);
+    console.error("Erreur lors du démarrage du serveur : ", err);
   } else {
-    console.log(`Server is running on port %s`, PORT);
+    console.log(`Serveur en écoute sur le port ${PORT}`);
   }
 });
