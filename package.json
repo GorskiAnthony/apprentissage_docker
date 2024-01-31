@@ -4,17 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server/index.js",
+    "postinstall": "cd client && npm install && cd .. && cd server && npm install",
+    "dev": "concurrently -p \"[{name}]\" -n \"client, server\" -c \"blue.bold,green.bold\" \"cd client && npm run dev\" \"cd server && npm run dev\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "dotenv": "^16.4.1",
-    "express": "^4.18.2"
-  },
   "devDependencies": {
-    "nodemon": "^3.0.3"
+    "concurrently": "^8.2.2"
   }
 }
