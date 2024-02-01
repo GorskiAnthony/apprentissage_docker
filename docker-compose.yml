@@ -16,4 +16,4 @@ services:
     ports:
       - 3310:3310
     volumes:
-        - ./server:/usr/src/app
+        - ./server:/server
