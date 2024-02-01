@@ -7,12 +7,11 @@ const app = express();
 
 const PORT = process.env.PORT || 3310;
 
-// Autorise les requêtes provenant de http://localhost:3000
-app.use(
-  cors({
-    origin: "http://localhost:3310",
-  }),
-);
+// Route de test
+
+app.get("/api/hello", (req, res) => {
+  res.json({ message: "Hello World!!" });
+});
 
 // Définit le répertoire contenant les fichiers statiques de l'application React
 const reactBuildPath = path.join(__dirname, "..", "..", "client", "dist");
