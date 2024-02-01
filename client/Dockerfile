@@ -1,6 +1,6 @@
 FROM node:lts-alpine
 
-WORKDIR /usr/src/app/client
+WORKDIR /usr/src/app/
 
 COPY package*.json ./
 
@@ -10,5 +10,4 @@ COPY . .
 
 RUN npm run build
 
-# Utilise le serveur HTTP simple fourni par Express pour servir les fichiers statiques
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]

@@ -14,6 +14,6 @@ services:
     build: ./server
     container_name: docker_server
     ports:
-      - 5500:5500
+      - 3310:3310
     volumes:
         - ./server:/usr/src/app
