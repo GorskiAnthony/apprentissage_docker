@@ -7,7 +7,7 @@ function App() {
   const [count, setCount] = useState(0);
   const [data, setData] = useState(null);
 
-  fetch("http://localhost:5500/")
+  fetch("http://localhost:3310/")
     .then((res) => {
       res.json().then((data) => {
         setData(data.message);

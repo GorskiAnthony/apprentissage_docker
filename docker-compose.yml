@@ -1,19 +1,12 @@
 version: "3.4"
 
 services:
-  client:
-    build: ./client
-    container_name: docker_client
-    ports:
-      - 3000:3000
+  web:
+    build: .
+    container_name: web
     volumes:
-        - ./client:/usr/src/app
-        - /usr/src/app/node_modules
-
-  server:
-    build: ./server
-    container_name: docker_server
+      - .:/var/www
+      - ./docker-entry.sh:/etc/entrypoint.sh
+    entrypoint: [ "sh", "/etc/entrypoint.sh" ]
     ports:
-      - 5500:5500
-    volumes:
-        - ./server:/usr/src/app
+      - "3310:3310"
